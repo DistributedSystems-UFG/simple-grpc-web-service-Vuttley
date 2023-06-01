@@ -44,9 +44,9 @@ class EmployeeServer(EmployeeService_pb2_grpc.EmployeeServiceServicer):
     usr = [ emp for emp in empDB if (emp['id'] == request.id) ]
     if len(usr) == 0:
       return EmployeeService_pb2.StatusReply(status='NOK')
-
-    empDB.remove(usr[0])
-    return EmployeeService_pb2.StatusReply(status='OK')
+    else:
+      empDB.remove(usr[0])
+      return EmployeeService_pb2.StatusReply(status='OK')
 
   def ListAllEmployees(self, request, context):
     list = EmployeeService_pb2.EmployeeDataList()
