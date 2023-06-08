@@ -16,8 +16,12 @@ def run():
         print ('Employee\'s data: ' + str(response))
 
         # Add a new employee
-        response = stub.CreateEmployee(EmployeeService_pb2.EmployeeData(id=301, name='Jose da Silva', title='Programmer'))
+        response = stub.CreateEmployee(EmployeeService_pb2.EmployeeData(id=301, name='Jose da Silva', title='Programmer', salary=1000))
         print ('Added new employee ' + response.status)
+        
+        # Change an employee's salary
+        response = stub.UpdateEmployeeSalary(EmployeeService_pb2.UpdateEmployeeSalary(id=301, salary=500))
+        print ('Updated employee ' + response.status)
 
         # Change an employee's title
         response = stub.UpdateEmployeeTitle(EmployeeService_pb2.EmployeeTitleUpdate(id=301, title='Senior Programmer'))
